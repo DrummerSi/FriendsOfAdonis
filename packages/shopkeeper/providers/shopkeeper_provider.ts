@@ -55,7 +55,8 @@ export default class ShopkeeperProvider {
       const route = router
         .post('/stripe/webhook', (ctx) => handleWebhook(ctx))
         .as('shopkeeper.webhook')
-        .use((ctx, next) => middleware.handle(ctx, next))
+        //Removed: As this causes errors
+        //.use((ctx, next) => middleware.handle(ctx, next))
 
       if (this.#config.webhook.secret) {
         const middlewares = router.named({
